@@ -1,179 +1,94 @@
 <!DOCTYPE html>
-<html lang="az">
-<head>
-  <meta charset="UTF-8">
-  <title>The Mango Time company</title>
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      background:#0f0f0f; 
-      color:#fff; 
-      text-align:center; 
-      padding:50px;
-    }
-    h1 { color:#FFA500; }
-    input, button { padding:10px; margin:5px; font-size:16px; border-radius:5px; border:none; }
-    button { background:#FFA500; color:#0f0f0f; cursor:pointer; }
-    button:hover { background:#ffb733; }
-    #profile { display:none; margin-top:20px;}
-  </style>
-</head>
-<body>
-  <h1>The Mango Time Tech</h1>
-  <p>welcome to the Mango world</p>
-
-  <h2>Sign</h2>
-  <input type="email" id="regEmail" placeholder="Email" required><br>
-  <input type="password" id="regPass" placeholder="Şifrə" required><br>
-  <button id="registerBtn">register</button>
-
-  <h2>Log in</h2>
-  <input type="email" id="loginEmail" placeholder="Email" required><br>
-  <input type="password" id="loginPass" placeholder="Şifrə" required><br>
-  <button id="loginBtn">login</button>
-
-  <div id="profile">
-    <h2>Profil</h2>
-    <p id="profileName"></p>
-    <button id="logoutBtn">logout</button>
-  </div>
-
-  <script type="module">
-    // Firebase modul versiya importları
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } 
-        from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-
-    // Firebase konfiqurasiyası (sənin layihədən alacaqsan)
-    const firebaseConfig = {
-      apiKey: "AIzaSyCXz8by7bfoxOGJY6K26K7GvYlhMxLNA78",
-      authDomain: "mango-time-tech.firebaseapp.com",
-      projectId: "mango-time-tech",
-      storageBucket: "mango-time-tech.firebasestorage.app",
-      messagingSenderId: "327270365246",
-      appId: "1:327270365246:web:8a76012edfc79eee5f796f",
-      measurementId: "G-D8QFEX0Z0S"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    // Qeydiyyat
-    document.getElementById('registerBtn').addEventListener('click', () => {
-      const email = document.getElementById('regEmail').value;
-      const pass = document.getElementById('regPass').value;
-      createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => alert("Qeydiyyat uğurla tamamlandı!"))
-      .catch(err => alert(err.message));
-    });
-
-    // Giriş
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const email = document.getElementById('loginEmail').value;
-      const pass = document.getElementById('loginPass').value;
-      signInWithEmailAndPassword(auth, email, pass)
-      .then(() => {
-        document.getElementById('profileName').innerText = "Xoş gəldin, " + email;
-        document.getElementById('profile').style.display = "block";
-      })
-      .catch(err => alert(err.message));
-    });
-
-    // Çıxış
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      signOut(auth).then(() => {
-        document.getElementById('profile').style.display = "none<!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>The Mango Time Tech</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body { 
-      font-family: Arial, sans-serif; 
+      font-family: Arial; 
       background:#0f0f0f; 
       color:#fff; 
       text-align:center; 
       padding:50px;
     }
     h1 { color:#FFA500; }
-    input, button { padding:10px; margin:5px; font-size:16px; border-radius:5px; border:none; }
+    input, button { 
+      padding:12px; 
+      margin:8px; 
+      font-size:16px; 
+      border-radius:6px; 
+      border:none; 
+    }
     button { background:#FFA500; color:#0f0f0f; cursor:pointer; }
     button:hover { background:#ffb733; }
     #profile { display:none; margin-top:20px;}
+    input { width: 80%; max-width:300px; }
   </style>
 </head>
 <body>
   <h1>The Mango Time Tech</h1>
-  <p>Gələcəyin texnologiyasına xoş gəlmisiniz</p>
+  <p>Welcome to the future of technology</p>
 
-  <h2>Qeydiyyat</h2>
+  <h2>Register</h2>
   <input type="email" id="regEmail" placeholder="Email" required><br>
-  <input type="password" id="regPass" placeholder="Şifrə" required><br>
-  <button id="registerBtn">Qeydiyyatdan keç</button>
+  <input type="password" id="regPass" placeholder="Password" required><br>
+  <button id="registerBtn">Register</button>
 
-  <h2>Giriş</h2>
+  <h2>Login</h2>
   <input type="email" id="loginEmail" placeholder="Email" required><br>
-  <input type="password" id="loginPass" placeholder="Şifrə" required><br>
-  <button id="loginBtn">Giriş et</button>
+  <input type="password" id="loginPass" placeholder="Password" required><br>
+  <button id="loginBtn">Login</button>
 
   <div id="profile">
-    <h2>Profil</h2>
+    <h2>Profile</h2>
     <p id="profileName"></p>
-    <button id="logoutBtn">Çıxış</button>
+    <button id="logoutBtn">Logout</button>
   </div>
 
   <script type="module">
-    // Firebase modul versiya importları
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } 
-        from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+      from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-    // Firebase konfiqurasiyası (sənin layihədən alacaqsan)
     const firebaseConfig = {
       apiKey: "AIzaSyCXz8by7bfoxOGJY6K26K7GvYlhMxLNA78",
       authDomain: "mango-time-tech.firebaseapp.com",
       projectId: "mango-time-tech",
       storageBucket: "mango-time-tech.firebasestorage.app",
       messagingSenderId: "327270365246",
-      appId: "1:327270365246:web:8a76012edfc79eee5f796f",
-      measurementId: "G-D8QFEX0Z0S"
+      appId: "1:327270365246:web:8a76012edfc79eee5f796f"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Qeydiyyat
+    // Register
     document.getElementById('registerBtn').addEventListener('click', () => {
       const email = document.getElementById('regEmail').value;
       const pass = document.getElementById('regPass').value;
       createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => alert("Qeydiyyat uğurla tamamlandı!"))
+      .then(() => alert("Registration successful!"))
       .catch(err => alert(err.message));
     });
 
-    // Giriş
+    // Login
     document.getElementById('loginBtn').addEventListener('click', () => {
       const email = document.getElementById('loginEmail').value;
       const pass = document.getElementById('loginPass').value;
       signInWithEmailAndPassword(auth, email, pass)
       .then(() => {
-        document.getElementById('profileName').innerText = "Xoş gəldin, " + email;
+        document.getElementById('profileName').innerText = "Welcome, " + email;
         document.getElementById('profile').style.display = "block";
       })
       .catch(err => alert(err.message));
     });
 
-    // Çıxış
+    // Logout
     document.getElementById('logoutBtn').addEventListener('click', () => {
       signOut(auth).then(() => {
         document.getElementById('profile').style.display = "none";
-        alert("Çıxış edildi!");
-      });
-    });
-  </script>
-</body>
-</html>
-        alert("Çıxış edildi!");
+        alert("Logged out!");
       });
     });
   </script>
