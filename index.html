@@ -1,105 +1,100 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Mango Time Tech</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { 
-      font-family: Arial; 
-      background:#0f0f0f; 
-      color:#fff; 
-      text-align:center; 
-      padding:50px;
-    }
-    h1 { color:#FFA500; }
-    input, button { 
-      padding:12px; 
-      margin:8px; 
-      font-size:16px; 
-      border-radius:6px; 
-      border:none; 
-    }
-    button { background:#FFA500; color:#0f0f0f; cursor:pointer; }
-    button:hover { background:#ffb733; }
-    #profile { display:none; margin-top:20px;}
-    input { width: 80%; max-width:300px; }
-  </style>
-</head>
-<body>
-  <h1>The Mango Time Tech</h1>
-  <p>Welcome to the future of technology</p>
-
-  <h2>Register</h2>
-  <input type="email" id="regEmail" placeholder="Email" required><br>
-  <input type="password" id="regPass" placeholder="Password" required><br>
-  <button id="registerBtn">Register</button>
-
-  <h2>Login</h2>
-  <input type="email" id="loginEmail" placeholder="Email" required><br>
-  <input type="password" id="loginPass" placeholder="Password" required><br>
-  <button id="loginBtn">Login</button>
-
-  <div id="profile">
-    <h2>Profile</h2>
-    <p id="profileName"></p>
-    <button id="logoutBtn">Logout</button>
-  </div>
-
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-import { 
-  getAuth, 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut,
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-    const firebaseConfig = {
-      apiKey: "AIzaSyCXz8by7bfoxOGJY6K26K7GvYlhMxLNA78",
-      authDomain: "mango-time-tech.firebaseapp.com",
-      projectId: "mango-time-tech",
-      storageBucket: "mango-time-tech.firebasestorage.app",
-      messagingSenderId: "327270365246",
-      appId: "1:327270365246:web:8a76012edfc79eee5f796f"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    // AUTO LOGIN (refresh protection)
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    document.getElementById('profileName').innerText =
-      "Welcome, " + user.email;
-    document.getElementById('profile').style.display = "block";
-  }
+<meta charset="UTF-8">
+<title>The Mango Time Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0f0f0f;
+  color:#fff;
 }
+header{
+  padding:60px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#111,#1a1a1a);
+}
+header h1{
+  font-size:40px;
+  color:#FFA500;
+}
+section{
+  padding:60px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:12px;
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+}
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  color:#aaa;
+}
+button{
+  padding:14px 28px;
+  background:#FFA500;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+</style>
+</head>
 
-    // Register
-    document.getElementById('registerBtn').addEventListener('click', () => {
-      const email = document.getElementById('regEmail').value;
-      const pass = document.getElementById('regPass').value;
-      createUserWithEmailAndPassword(auth, email, pass)
-      .then(() => alert("Registration successful!"))
-      .catch(err => alert(err.message));
-    });
+<body>
 
-    // Login
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const email = document.getElementById('loginEmail').value;
-      const pass = document.getElementById('loginPass').value;
-      signInWithEmailAndPassword(auth, email, pass)
-.then(() => {
-  window.location.href = "profile.html";
-})
+<header>
+  <h1>The Mango Time Tech</h1>
+  <p>Think Future. Live Now.</p>
+  <button>Explore Our Vision</button>
+</header>
 
-    // Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      signOut(auth).then(() => {
-        document.getElementById('profile').style.display = "none";
-        alert("Logged out!");
-      });
-    });
-  </script>
+<section>
+  <h2>What We Do</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Technology</h3>
+      <p>We build modern digital solutions for the future.</p>
+    </div>
+    <div class="card">
+      <h3>Innovation</h3>
+      <p>Creative ideas turned into powerful products.</p>
+    </div>
+    <div class="card">
+      <h3>Vision</h3>
+      <p>We shape tomorrow with smart technology.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>About Mango Time</h2>
+  <p>
+    The Mango Time Tech is a future-focused technology company
+    working on innovative digital products and ideas.
+  </p>
+</section>
+
+<footer>
+  © 2026 The Mango Time Tech — All rights reserved
+</footer>
+
 </body>
 </html>
