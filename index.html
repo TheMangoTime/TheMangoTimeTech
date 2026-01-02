@@ -4,128 +4,124 @@
 <meta charset="UTF-8">
 <title>The Mango Time Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 /* ===== BODY ===== */
 body{
   margin:0;
   font-family: Arial, sans-serif;
+  background: linear-gradient(120deg,#0f0f0f,#1a1a1a,#0f0f0f);
+  background-size:400% 400%;
+  animation: gradientBG 15s ease infinite;
   color:#fff;
   text-align:center;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
-  background: linear-gradient(120deg,#0f0f0f,#1a1a1a,#0f0f0f);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
-  overflow-x:hidden;
 }
 
-/* ===== FON ANİMASİYASI ===== */
+/* ===== BACKGROUND ANIMATION ===== */
 @keyframes gradientBG {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-/* ===== HEADER ===== */
-header{
-  padding:100px 20px 20px 20px;
-  position:relative;
+/* ===== TOP PANEL ===== */
+#top-panel{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:60px;
+  background:#111;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  box-shadow:0 2px 12px rgba(0,0,0,0.6);
 }
 
-/* Başlıq sabit, yuxarıda qalsın */
-header h1{
-  font-size:36px;
-  color:#FFA500;
+#top-panel h1{
   margin:0;
-  position: fixed;
-  top:20px;
-  left:50%;
-  transform: translateX(-50%);
+  font-size:22px;
+  color:#FFA500;
   animation: neon 1.5s ease-in-out infinite alternate;
-  z-index: 1000;
 }
 
-/* Neon yanıb-sönmə effekti */
-@keyframes neon {
-  from { text-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 20px #FFA500; }
-  to { text-shadow: 0 0 20px #FFB733, 0 0 30px #FFB733, 0 0 40px #FFB733; }
+@keyframes neon{
+  from{ text-shadow:0 0 5px #FFA500 }
+  to{ text-shadow:0 0 25px #FFB733 }
+}
+
+/* ===== CONTENT ===== */
+.content{
+  margin-top:120px; /* panel altı boşluq */
 }
 
 /* ===== BUTTON ===== */
 button{
   padding:16px 32px;
   font-size:18px;
-  border-radius:8px;
   border:none;
+  border-radius:8px;
   background:#FFA500;
-  color:#0f0f0f;
+  color:#000;
   cursor:pointer;
   transition:.3s;
-  margin-top:120px; /* button mərkəzə daha yaxın */
 }
 button:hover{
   background:#ffb733;
 }
 
-/* ===== SECTION ===== */
-section{
-  padding:60px 20px;
-}
+/* ===== NAV BUTTONS ===== */
 .nav-buttons{
   display:flex;
   justify-content:center;
   gap:30px;
-  margin-top:30px;
-}
-.nav-buttons button{
-  width:150px;
+  margin-top:40px;
 }
 
 /* ===== FOOTER ===== */
 footer{
-  text-align:center;
+  margin-top:120px;
   padding:20px;
   background:#111;
   color:#aaa;
-  margin-top:auto;
 }
 
-/* ===== GİZLİ HƏL ===== */
-.hidden{
-  display:none;
-}
+/* ===== HIDDEN ===== */
+.hidden{ display:none }
 </style>
 </head>
+
 <body>
 
-<!-- Ana səhifə -->
-<div id="home">
-  <header>
-    <h1>The Mango Time Tech</h1>
-    <button id="exploreBtn">Explore Our Vision</button>
-  </header>
+<!-- TOP PANEL -->
+<div id="top-panel">
+  <h1>The Mango Time Tech</h1>
 </div>
 
-<!-- Yeni səhifə -->
-<div id="vision" class="hidden">
-  <header>
-    <h1>The Mango Time Tech</h1>
-    <div class="nav-buttons">
-      <button onclick="showSection('about')">About</button>
-      <button onclick="showSection('contact')">Contact</button>
-    </div>
-  </header>
-  <section id="about">
+<!-- HOME -->
+<div id="home" class="content">
+  <button onclick="openVision()">Explore Our Vision</button>
+</div>
+
+<!-- VISION -->
+<div id="vision" class="content hidden">
+  <div class="nav-buttons">
+    <button onclick="show('about')">About</button>
+    <button onclick="show('contact')">Contact</button>
+  </div>
+
+  <div id="about">
     <h2>About</h2>
-    <p>We are a future-focused technology company building innovative digital products.</p>
-    <button onclick="backToHome()">Home</button>
-  </section>
-  <section id="contact">
+    <p>We are a future-focused technology company building innovative products.</p>
+    <button onclick="goHome()">Home</button>
+  </div>
+
+  <div id="contact" class="hidden">
     <h2>Contact</h2>
     <p>Email: hsjazebusiness@gmail.com</p>
-    <button onclick="backToHome()">Home</button>
-  </section>
+    <button onclick="goHome()">Home</button>
+  </div>
 </div>
 
 <footer>
@@ -133,33 +129,21 @@ footer{
 </footer>
 
 <script>
-// Ana səhifə və yeni səhifə
-const home = document.getElementById('home');
-const vision = document.getElementById('vision');
-const exploreBtn = document.getElementById('exploreBtn');
-
-// Explore Our Vision button kliklə yeni səhifəyə
-exploreBtn.addEventListener('click', () => {
-  home.classList.add('hidden');
-  vision.classList.remove('hidden');
-});
-
-// Nav button funksiyası
-function showSection(id){
-  const sections = ['about','contact'];
-  sections.forEach(sec=>{
-    document.getElementById(sec).style.display = (sec===id) ? 'block':'none';
-  });
+function openVision(){
+  home.classList.add("hidden");
+  vision.classList.remove("hidden");
 }
 
-// Home button funksiyası
-function backToHome(){
-  vision.classList.add('hidden');
-  home.classList.remove('hidden');
+function goHome(){
+  vision.classList.add("hidden");
+  home.classList.remove("hidden");
 }
 
-// Başlanğıcda yalnız About göstər
-showSection('about');
+function show(id){
+  document.getElementById("about").classList.add("hidden");
+  document.getElementById("contact").classList.add("hidden");
+  document.getElementById(id).classList.remove("hidden");
+}
 </script>
 
 </body>
