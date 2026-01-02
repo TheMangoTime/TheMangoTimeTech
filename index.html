@@ -48,9 +48,13 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } 
-      from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
     const firebaseConfig = {
       apiKey: "AIzaSyCXz8by7bfoxOGJY6K26K7GvYlhMxLNA78",
       authDomain: "mango-time-tech.firebaseapp.com",
