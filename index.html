@@ -9,12 +9,21 @@
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background:#0f0f0f;
   color:#fff;
   text-align:center;
   display:flex;
   flex-direction:column;
   min-height:100vh;
+  background: linear-gradient(120deg,#0f0f0f,#1a1a1a,#0f0f0f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* ===== FON ANİMASİYASI ===== */
+@keyframes gradientBG {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
 /* ===== HEADER ===== */
@@ -23,7 +32,7 @@ header{
   position:relative;
 }
 header h1{
-  font-size:36px; /* başlıq dəyişməz */
+  font-size:36px;
   color:#FFA500;
   margin:0 0 20px 0;
   animation: neon 1.5s ease-in-out infinite alternate;
@@ -71,7 +80,7 @@ footer{
   padding:20px;
   background:#111;
   color:#aaa;
-  margin-top:auto; /* footer aşağıda qalır */
+  margin-top:auto;
 }
 
 /* ===== GİZLİ HƏL ===== */
