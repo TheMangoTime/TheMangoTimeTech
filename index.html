@@ -23,7 +23,7 @@ header{
   position:relative;
 }
 header h1{
-  font-size:36px; /* kiçildildi */
+  font-size:36px; /* başlıq dəyişməz */
   color:#FFA500;
   margin:0 0 20px 0;
   animation: neon 1.5s ease-in-out infinite alternate;
@@ -45,7 +45,7 @@ button{
   color:#0f0f0f;
   cursor:pointer;
   transition:.3s;
-  margin-top:20px;
+  margin-top:60px; /* button aşağı çəkildi, mərkəzə yaxın */
 }
 button:hover{
   background:#ffb733;
@@ -107,7 +107,7 @@ footer{
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: hsjazebusiness@gmail.com</p>
-    <button onclick="backToHome()">Back to Home</button>
+    <button onclick="backToHome()">Home</button>
   </section>
 </div>
 
@@ -135,7 +135,7 @@ function showSection(id){
   });
 }
 
-// Back to Home button funksiyası
+// Home button funksiyası
 function backToHome(){
   vision.classList.add('hidden');
   home.classList.remove('hidden');
