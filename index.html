@@ -66,6 +66,14 @@ import {
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    // AUTO LOGIN (refresh protection)
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById('profileName').innerText =
+      "Welcome, " + user.email;
+    document.getElementById('profile').style.display = "block";
+  }
+}
 
     // Register
     document.getElementById('registerBtn').addEventListener('click', () => {
