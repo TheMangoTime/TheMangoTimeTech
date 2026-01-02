@@ -5,26 +5,37 @@
 <title>The Mango Time Tech</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-/*  ===== BODY ===== */
+/* ===== BODY ===== */
 body{
   margin:0;
   font-family: Arial, sans-serif;
   background:#0f0f0f;
   color:#fff;
   text-align:center;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
 }
 
-/*  ===== HEADER ===== */
+/* ===== HEADER ===== */
 header{
-  padding:80px 20px;
+  padding:40px 20px 20px 20px;
+  position:relative;
 }
 header h1{
-  font-size:48px;
+  font-size:36px; /* kiçildildi */
   color:#FFA500;
-  margin:0 0 40px 0;
+  margin:0 0 20px 0;
+  animation: neon 1.5s ease-in-out infinite alternate;
 }
 
-/*  ===== BUTTON ===== */
+/* Neon yanıb-sönmə effekti */
+@keyframes neon {
+  from { text-shadow: 0 0 5px #FFA500, 0 0 10px #FFA500, 0 0 20px #FFA500; }
+  to { text-shadow: 0 0 20px #FFB733, 0 0 30px #FFB733, 0 0 40px #FFB733; }
+}
+
+/* ===== BUTTON ===== */
 button{
   padding:16px 32px;
   font-size:18px;
@@ -34,35 +45,36 @@ button{
   color:#0f0f0f;
   cursor:pointer;
   transition:.3s;
+  margin-top:20px;
 }
 button:hover{
   background:#ffb733;
 }
 
-/*  ===== SECTION ===== */
+/* ===== SECTION ===== */
 section{
-  padding:80px 20px;
+  padding:60px 20px;
 }
 .nav-buttons{
   display:flex;
   justify-content:center;
   gap:30px;
-  margin-top:40px;
+  margin-top:30px;
 }
 .nav-buttons button{
   width:150px;
 }
 
-/*  ===== FOOTER ===== */
+/* ===== FOOTER ===== */
 footer{
   text-align:center;
-  padding:30px;
+  padding:20px;
   background:#111;
   color:#aaa;
-  position:relative;
+  margin-top:auto; /* footer aşağıda qalır */
 }
 
-/*  ===== GİZLİ HƏL ===== */
+/* ===== GİZLİ HƏL ===== */
 .hidden{
   display:none;
 }
@@ -90,10 +102,12 @@ footer{
   <section id="about">
     <h2>About</h2>
     <p>We are a future-focused technology company building innovative digital products.</p>
+    <button onclick="backToHome()">Home</button>
   </section>
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: contact@mangotime.tech</p>
+    <p>Email: hsjazebusiness@gmail.com</p>
+    <button onclick="backToHome()">Back to Home</button>
   </section>
 </div>
 
@@ -101,7 +115,6 @@ footer{
   © 2026 The Mango Time Tech — All rights reserved
 </footer>
 
-<!-- ===== JAVASCRIPT ===== -->
 <script>
 // Ana səhifə və yeni səhifə
 const home = document.getElementById('home');
@@ -120,6 +133,12 @@ function showSection(id){
   sections.forEach(sec=>{
     document.getElementById(sec).style.display = (sec===id) ? 'block':'none';
   });
+}
+
+// Back to Home button funksiyası
+function backToHome(){
+  vision.classList.add('hidden');
+  home.classList.remove('hidden');
 }
 
 // Başlanğıcda yalnız About göstər
