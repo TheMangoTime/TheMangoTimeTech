@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profile | The Mango Time Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  background:#0f0f0f;
+  color:#fff;
+  font-family:Arial;
+  text-align:center;
+  padding:40px;
+}
+img{
+  width:120px;
+  border-radius:50%;
+  margin-top:20px;
+}
+input,button{
+  padding:12px;
+  margin:8px;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+}
+button{
+  background:#FFA500;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<h1>Your Profile</h1>
+<img id="avatar" src="">
+<p id="name"></p>
+
+<input id="username" placeholder="Username"><br>
+<input id="photoURL" placeholder="Profile image URL"><br>
+<button id="saveBtn">Save</button><br><br>
+
+<button id="logoutBtn">Logout</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, updateProfile, signOut } 
+from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCXz8by7bfoxOGJY6K26K7GvYlhMxLNA78",
+  authDomain: "mango-time-tech.firebaseapp.com",
+  projectId: "mango-time-tech",
+  storageBucket: "mango-time-tech.firebasestorage.app",
+  messagingSenderId: "327270365246",
+  appId: "1:327270365246:web:8a76012edfc79eee5f796f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user)=>{
+  if(!user){
+    window.location.href="index.html";
+  }else{
+    document.getElementById("name").innerText =
+      user.displayName || user.email;
+    if(user.photoURL){
+      document.getElementById("avatar").src = user.photoURL;
+    }
+  }
+});
+
+document.getElementById("saveBtn").onclick = ()=>{
+  updateProfile(auth.currentUser,{
+    displayName: username.value,
+    photoURL: photoURL.value
+  }).then(()=>alert("Profile saved!"));
+};
+
+document.getElementById("logoutBtn").onclick = ()=>{
+  signOut(auth).then(()=>{
+    window.location.href="index.html";
+  });
+};
+</script>
+
+</body>
+</html>
