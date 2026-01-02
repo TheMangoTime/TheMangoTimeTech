@@ -17,6 +17,7 @@ body{
   background: linear-gradient(120deg,#0f0f0f,#1a1a1a,#0f0f0f);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
+  overflow-x:hidden;
 }
 
 /* ===== FON ANİMASİYASI ===== */
@@ -28,14 +29,21 @@ body{
 
 /* ===== HEADER ===== */
 header{
-  padding:40px 20px 20px 20px;
+  padding:100px 20px 20px 20px;
   position:relative;
 }
+
+/* Başlıq sabit, yuxarıda qalsın */
 header h1{
   font-size:36px;
   color:#FFA500;
-  margin:0 0 20px 0;
+  margin:0;
+  position: fixed;
+  top:20px;
+  left:50%;
+  transform: translateX(-50%);
   animation: neon 1.5s ease-in-out infinite alternate;
+  z-index: 1000;
 }
 
 /* Neon yanıb-sönmə effekti */
@@ -54,7 +62,7 @@ button{
   color:#0f0f0f;
   cursor:pointer;
   transition:.3s;
-  margin-top:60px; /* button aşağı çəkildi, mərkəzə yaxın */
+  margin-top:120px; /* button mərkəzə daha yaxın */
 }
 button:hover{
   background:#ffb733;
