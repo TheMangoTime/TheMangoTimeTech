@@ -1,123 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Mango Time Tech</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mango Time Tech</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #1a1a1a, #000);
-      color: #fff;
-      text-align: center;
-      animation: pageFade 1.2s ease forwards;
-    }
+body {
+    background: linear-gradient(180deg, #0b0b0b, #1a1a1a);
+    color: white;
+}
 
-    /* HEADER PANEL */
-    .header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 0;
-      background: rgba(0, 0, 0, 0.85);
-      box-shadow: 0 4px 15px rgba(255,165,0,0.25);
-      z-index: 1000;
-    }
+/* ===== FIXED HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    padding: 18px 0;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(255,165,0,0.2);
+}
 
-    .header h1 {
-      margin: 0;
-      color: #FFA500;
-      font-size: 26px;
-      letter-spacing: 1px;
-      animation: neonPulse 2.5s infinite alternate;
-    }
+header h1 {
+    color: orange;
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(255,165,0,0.6);
+}
 
-    /* MAIN CONTENT */
-    .container {
-      padding-top: 140px;
-      min-height: 100vh;
-      animation: slideUp 1.2s ease forwards;
-    }
+/* ===== MAIN SECTION ===== */
+main {
+    min-height: calc(100vh - 140px);
+    padding-top: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
 
-    button {
-      background: #FFA500;
-      color: #000;
-      border: none;
-      border-radius: 10px;
-      padding: 14px 26px;
-      font-size: 18px;
-      cursor: pointer;
-      margin: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+/* ===== BUTTONS ===== */
+button {
+    background: orange;
+    color: black;
+    border: none;
+    padding: 16px 36px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    button:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 18px rgba(255,165,0,0.8);
-    }
+button:hover {
+    background: #ffcc66;
+    transform: scale(1.05);
+}
 
-    .footer {
-      margin-top: 80px;
-      padding: 20px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
+/* ===== SECOND PAGE ===== */
+.section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 25px;
+}
 
-    /* ANIMATIONS */
-    @keyframes pageFade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+.section h2 {
+    font-size: 32px;
+}
 
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+.section p {
+    max-width: 500px;
+    font-size: 18px;
+    opacity: 0.9;
+}
 
-    @keyframes neonPulse {
-      from {
-        text-shadow: 0 0 6px rgba(255,165,0,0.6);
-      }
-      to {
-        text-shadow: 0 0 16px rgba(255,165,0,1);
-      }
-    }
-  </style>
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 25px 10px;
+    opacity: 0.6;
+    font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <div class="header">
+<header>
     <h1>The Mango Time Tech</h1>
-  </div>
+</header>
 
-  <!-- MAIN -->
-  <div class="container">
-    <button onclick="goVision()">Explore Our Vision</button>
+<main id="home">
+    <button onclick="openVision()">Explore Our Vision</button>
+</main>
 
-    <div class="footer">
-      © 2026 The Mango Time Tech — All rights reserved
-    </div>
-  </div>
+<main id="vision" class="section">
+    <button onclick="showAbout()">About</button>
+    <button onclick="showContact()">Contact</button>
+</main>
 
-  <script>
-    function goVision() {
-      window.location.href = "vision.html";
-    }
-  </script>
+<main id="about" class="section">
+    <h2>About</h2>
+    <p>We are a future-focused technology company building innovative digital products.</p>
+    <button onclick="goHome()">Home</button>
+</main>
+
+<main id="contact" class="section">
+    <h2>Contact</h2>
+    <p>Email: hsjazebusiness@gmail.com</p>
+    <button onclick="goHome()">Home</button>
+</main>
+
+<footer>
+    © 2026 The Mango Time Tech — All rights reserved
+</footer>
+
+<script>
+function openVision() {
+    hideAll();
+    document.getElementById("vision").style.display = "flex";
+}
+
+function showAbout() {
+    hideAll();
+    document.getElementById("about").style.display = "flex";
+}
+
+function showContact() {
+    hideAll();
+    document.getElementById("contact").style.display = "flex";
+}
+
+function goHome() {
+    hideAll();
+    document.getElementById("home").style.display = "flex";
+}
+
+function hideAll() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("vision").style.display = "none";
+    document.getElementById("about").style.display = "none";
+    document.getElementById("contact").style.display = "none";
+}
+</script>
 
 </body>
 </html>
