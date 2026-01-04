@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About – The Mango Time Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  color:#fff;
+  text-align:center;
+}
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 0;
+  background:rgba(0,0,0,0.9);
+}
+.header h1{
+  margin:0;
+  color:#FFA500;
+  font-size:26px;
+}
+.container{
+  padding-top:160px;
+}
+.footer{
+  margin-top:80px;
+  padding:20px;
+  font-size:14px;
+  opacity:.7;
+}
+.lang{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+}
+.lang button{
+  background:transparent;
+  border:1px solid #FFA500;
+  color:#FFA500;
+  margin-left:5px;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+  <h1>The Mango Time Tech</h1>
+</div>
+
+<div class="container">
+  <h2 id="title">About</h2>
+  <p id="text">
+    The Mango Time company was founded on December 23, 2025 by Abraham Hsjaze.
+    Our mission is to make the future more technological and turn dreams into reality.
+    Make your dream real with us.
+  </p>
+
+  <br>
+  <button onclick="location.href='contact.html'">Contact</button>
+  <button onclick="location.href='index.html'">Home</button>
+
+  <div class="footer">
+    © 2026 The Mango Time Tech — All rights reserved
+  </div>
+</div>
+
+<div class="lang">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('tr')">TR</button>
+</div>
+
+<script>
+const t={
+ en:{
+  title:"About",
+  text:"The Mango Time company was founded on December 23, 2025 by Abraham Hsjaze. Our mission is to make the future more technological and turn dreams into reality. Make your dream real with us."
+ },
+ tr:{
+  title:"Hakkımızda",
+  text:"The Mango Time company 23 Aralık 2025 tarihinde Abraham Hsjaze tarafından kurulmuştur. Amacımız geleceği daha teknolojik hale getirmek ve hayalleri gerçeğe dönüştürmektir. Sen de hayalini bizimle gerçeğe dönüştür."
+ }
+};
+function setLang(l){
+ title.innerText=t[l].title;
+ text.innerText=t[l].text;
+}
+</script>
+</body>
+</html>
