@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact – The Mango Time Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  color:#fff;
+  text-align:center;
+}
+.header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 0;
+  background:rgba(0,0,0,0.9);
+}
+.header h1{
+  margin:0;
+  color:#FFA500;
+  font-size:26px;
+}
+.container{
+  padding-top:160px;
+}
+.footer{
+  margin-top:80px;
+  padding:20px;
+  font-size:14px;
+  opacity:.7;
+}
+.lang{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+}
+.lang button{
+  background:transparent;
+  border:1px solid #FFA500;
+  color:#FFA500;
+  margin-left:5px;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+  <h1>The Mango Time Tech</h1>
+</div>
+
+<div class="container">
+  <h2 id="title">Contact</h2>
+  <p id="mail">Email: hsjazebusiness@gmail.com</p>
+
+  <br>
+  <button onclick="location.href='index.html'">Home</button>
+
+  <div class="footer">
+    © 2026 The Mango Time Tech — All rights reserved
+  </div>
+</div>
+
+<div class="lang">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('tr')">TR</button>
+</div>
+
+<script>
+const c={
+ en:{title:"Contact",mail:"Email: hsjazebusiness@gmail.com"},
+ tr:{title:"İletişim",mail:"E-posta: hsjazebusiness@gmail.com"}
+};
+function setLang(l){
+ title.innerText=c[l].title;
+ mail.innerText=c[l].mail;
+}
+</script>
+</body>
+</html>
