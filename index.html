@@ -13,7 +13,6 @@ body{
   color:#fff;
   text-align:center;
 }
-
 .header{
   position:fixed;
   top:0;
@@ -21,27 +20,21 @@ body{
   padding:18px 0;
   background:rgba(0,0,0,0.9);
   box-shadow:0 4px 15px rgba(255,165,0,0.25);
-  z-index:1000;
 }
-
 .header h1{
   margin:0;
   color:#FFA500;
   font-size:26px;
-  animation:neon 2.5s infinite alternate;
 }
-
 .container{
   padding-top:170px;
   min-height:100vh;
 }
-
 .slogan{
   font-size:18px;
   opacity:.85;
   margin-bottom:30px;
 }
-
 button{
   background:#FFA500;
   color:#000;
@@ -50,110 +43,58 @@ button{
   padding:14px 28px;
   font-size:18px;
   cursor:pointer;
-  transition:.3s;
 }
-
-button:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 18px rgba(255,165,0,.8);
-}
-
-.section{
-  margin-top:60px;
-  max-width:700px;
-  margin-left:auto;
-  margin-right:auto;
-  padding:0 20px;
-}
-
 .footer{
   margin-top:80px;
   padding:20px;
   font-size:14px;
   opacity:.7;
 }
-
-/* Language switch */
-.lang-switch{
+.lang{
   position:fixed;
   right:15px;
   bottom:15px;
-  z-index:2000;
 }
-
-.lang-switch button{
+.lang button{
   background:transparent;
   border:1px solid #FFA500;
   color:#FFA500;
-  padding:6px 12px;
   margin-left:5px;
-  font-size:14px;
-}
-
-/* Animations */
-@keyframes neon{
-  from{ text-shadow:0 0 6px rgba(255,165,0,.6);}
-  to{ text-shadow:0 0 16px rgba(255,165,0,1);}
 }
 </style>
 </head>
 
 <body>
-
 <div class="header">
   <h1>The Mango Time Tech</h1>
 </div>
 
 <div class="container">
-  <div class="slogan" id="slogan">
-    Building the future of smart technology
-  </div>
-
-  <button id="visionBtn">Explore Our Vision</button>
-
-  <div class="section">
-    <h2 id="aboutTitle">About</h2>
-    <p id="aboutText">
-      The Mango Time company was founded on December 23, 2025 by Abraham Hsjaze.
-      Our mission is to make the future more technological and turn dreams into reality.
-      Make your dream real with us.
-    </p>
-  </div>
+  <div class="slogan" id="slogan">Building the future of smart technology</div>
+  <button id="btn" onclick="go()">Explore Our Vision</button>
 
   <div class="footer">
     © 2026 The Mango Time Tech — All rights reserved
   </div>
 </div>
 
-<!-- Language buttons -->
-<div class="lang-switch">
+<div class="lang">
   <button onclick="setLang('en')">EN</button>
   <button onclick="setLang('tr')">TR</button>
 </div>
 
 <script>
-const content = {
-  en:{
-    slogan:"Building the future of smart technology",
-    vision:"Explore Our Vision",
-    aboutTitle:"About",
-    aboutText:"The Mango Time company was founded on December 23, 2025 by Abraham Hsjaze. Our mission is to make the future more technological and turn dreams into reality. Make your dream real with us."
-  },
-  tr:{
-    slogan:"Akıllı teknolojinin geleceğini inşa ediyoruz",
-    vision:"Vizyonumuzu Keşfet",
-    aboutTitle:"Hakkımızda",
-    aboutText:"The Mango Time company 23 Aralık 2025 tarihinde Abraham Hsjaze tarafından kurulmuştur. Amacımız geleceği daha teknolojik hale getirmek ve hayalleri gerçeğe dönüştürmektir. Sen de hayalini bizimle gerçeğe dönüştür."
-  }
+function go(){
+  window.location.href="about.html";
+}
+const text={
+  en:{s:"Building the future of smart technology",b:"Explore Our Vision"},
+  tr:{s:"Akıllı teknolojinin geleceğini inşa ediyoruz",b:"Vizyonumuzu Keşfet"}
 };
-
-function setLang(lang){
-  document.getElementById("slogan").innerText = content[lang].slogan;
-  document.getElementById("visionBtn").innerText = content[lang].vision;
-  document.getElementById("aboutTitle").innerText = content[lang].aboutTitle;
-  document.getElementById("aboutText").innerText = content[lang].aboutText;
+function setLang(l){
+  slogan.innerText=text[l].s;
+  btn.innerText=text[l].b;
 }
 </script>
-
 </body>
 </html>
