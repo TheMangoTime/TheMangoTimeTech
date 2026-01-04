@@ -32,12 +32,21 @@
       font-weight: 700;
     }
 
+    /* ✅ DÜZƏLİŞ BURADIR */
+    nav {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      white-space: nowrap;
+    }
+
     nav a {
-      margin: 0 15px;
       color: #fff;
       text-decoration: none;
       font-size: 14px;
       opacity: 0.8;
+      display: inline-block;
     }
 
     nav a:hover {
@@ -121,10 +130,17 @@
       cursor: pointer;
     }
 
+    /* ✅ MOBİLDƏ DƏ YAN-YANA QALSIN */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
+      }
+
+      nav {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
       }
 
       .hero h1 {
